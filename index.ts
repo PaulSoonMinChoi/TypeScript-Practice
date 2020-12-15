@@ -168,9 +168,28 @@ let newLinkList = new Stack<number>();
 newLinkList
   .push([10, 20, 30, 40])
 
-  console.log(newLinkList.pop())
+//   console.log(newLinkList.pop())
 
-console.log(newLinkList.print())
+// console.log(newLinkList.print())
 
 
 
+function* getFibSequence(): IterableIterator<number> {
+  let twoAgo = 0;
+  let oneAgo = 1;
+
+  while(true) {
+    let nextValue = twoAgo + oneAgo;
+    yield nextValue;
+    twoAgo = oneAgo;
+    oneAgo = nextValue;
+  }
+}
+
+
+let it = getFibSequence();
+console.log(it.next())
+console.log(it.next())
+console.log(it.next())
+console.log(it.next())
+console.log(it.next())
